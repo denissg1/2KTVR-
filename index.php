@@ -6,7 +6,7 @@
 </head>
 <body>
 	<?php
-		echo 'Git жжот';
+		echo 'Git нереально жжот';
 	?>
 </body>
 </html>
