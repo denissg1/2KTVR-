@@ -17,7 +17,7 @@ class UserController
 	public function list_action()
 	{
 		$usermodel = new UserModel();
-		$users = $usermodel->get_all_users();
+		$users = $usermodel->get_all_rows();
 		$html = $this->render_template("view/template/listuser.php", array('users' => $users));
 		return new Response($html);
 	}

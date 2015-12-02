@@ -1,20 +1,13 @@
 <?php
 class UserModel extends DBH {
 	
-
+	public function UserModel()
+	{
+		parent::DBH('user');
+	}
 	//--------------------------------------------------------------------------------------
 
-	public function get_all_users()
-	{
-		$sql = 'SELECT `id`, `firstname`, `lastname` FROM user ORDER BY `id`';
-		$stmt = $this->getDBH()->query($sql);
-		$users = array();
-		while ($row = $stmt->fetch())
-		{
-			$users[] = $row;
-		}
-		return $users;
-	}
+
 
 	//-------------------------------------------------------------------------------------
 

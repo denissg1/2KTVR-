@@ -1,10 +1,10 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Response;
+
 class PostController 
 {
 	
-	//use Symfony\Component\HttpFoundation\Response;
 
 
 	public function render_template($path, array $args)
@@ -21,7 +21,7 @@ class PostController
 	public function list_action()
 	{
 		$postmodel = new PostModel();
-		$posts = $postmodel->get_all_posts();
+		$posts = $postmodel->get_all_rows();
 		$html = $this->render_template("view/template/listpost.php", array('posts' => $posts));
 		return new Response($html);
 	}

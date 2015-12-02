@@ -2,33 +2,19 @@
 class PostModel extends DBH {
 
 
-
-	//--------------------------------------------------------------------------------------
-
-	public function get_all_posts()
+	public function PostModel()
 	{
-
-		$sql = 'SELECT * FROM `post`';
-		$stmt = $this->getDBH()->query($sql);
-		$posts = array();
-		while ($row = $stmt->fetch())
-		{
-			$posts[] = $row;
-		}
-		return $posts;
+		parent::DBH('post');
 	}
 
-	//-------------------------------------------------------------------------------------
 
 	public function get_post_by_id($id)
 	{
 		$sql = "SELECT `date`, `title`, `content`, `autor` FROM post WHERE `id` = ?";
 		$stmt = $this->getDBH()->prepare($sql); //подготовка места для переменных
-		$stmt->execute(array($id)); //присваивает значения в соответствующие места
-		foreach ($stmt as $value)
-		{
-			$post = $value;
-		}
+		$stmt->execute([$id]); //присваивает значения в соответствующие места
+		
+		$post = $stmt->fetch();
 		return $post;
 	}
 
