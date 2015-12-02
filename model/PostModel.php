@@ -43,12 +43,6 @@ class PostModel extends DBH {
 
 	//--------------------------------------------------------------------------------------
 
-	public function delete_post_by_id($id)
-	{
-		$sql = "DELETE FROM post WHERE id = ?";
-		$stmt = $this->getDBH()->prepare($sql);
-		$stmt->execute([$id]);
-		return $stmt;
-	}
+
 
 }

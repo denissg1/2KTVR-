@@ -27,7 +27,7 @@ class UserController
 	public function show_action($id)
 	{
 		$usermodel = new UserModel();
-		$user = $usermodel->get_user_by_id($id);
+		$user = $usermodel->get_row_by_id($id);
 		$html = $this->render_template("view/template/showuser.php", array('user' => $user));
 		return new Response($html);
 	}
@@ -37,7 +37,7 @@ class UserController
 	public function admin_action()
 	{
 		$usermodel = new UserModel();
-		$users = $usermodel->get_all_users();
+		$users = $usermodel->get_all_rows();
 		$html = $this->render_template("view/template/adminuser.php", array('users' => $users));
 		return new Response($html);
 	}
@@ -48,7 +48,7 @@ class UserController
 	{
 		$usermodel = new UserModel();
 		$usermodel->add_user();
-		$users = $usermodel->get_all_users();
+		$users = $usermodel->get_all_rows();
 		$html = $this->render_template("view/template/adminuser.php", array('users'=>$users));
 		return new Response($html);
 	}
@@ -58,8 +58,8 @@ class UserController
 	public function delete_action($id)
 	{
 		$usermodel = new UserModel();
-		$usermodel->delete_user_by_id($id);
-		$users = $usermodel->get_all_users();
+		$usermodel->delete_row_by_id($id);
+		$users = $usermodel->get_all_rows();
 		$html = $this->render_template("view/template/adminuser.php", array('users'=>$users));
 		return new Response($html);
 	}

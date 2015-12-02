@@ -47,5 +47,29 @@ class DBH {
 		}
 		return $rows;
 	}
+
+
+//-------------------------------------------------------------------------
+
+	public function delete_row_by_id($id)
+	{
+		$sql = "DELETE FROM $this->table WHERE id = ?";
+		$stmt = $this->getDBH()->prepare($sql);
+		$stmt->execute([$id]);
+		return $stmt;
+	}
+
+//-------------------------------------------------------------------------
+
+	public function get_row_by_id($id)
+	{
+		$sql = "SELECT * FROM $this->table WHERE id = ?";
+		$stmt = $this->getDBH()->prepare($sql); //подготовка места для переменных
+		$stmt->execute([$id]); //присваивает значения в соответствующие места
+		
+		$row = $stmt->fetch();
+		return $row;
+	}
 	
 }
+

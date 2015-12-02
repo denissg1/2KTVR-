@@ -55,12 +55,5 @@ class UserModel extends DBH {
 
 	//--------------------------------------------------------------------------------------
 
-	public function delete_user_by_id($id)
-	{
-		$sql = "DELETE FROM user WHERE id = ?";
-		$stmt = $this->getDBH()->prepare($sql);
-		$stmt->execute([$id]);
-		return $stmt;
-	}
 
 }

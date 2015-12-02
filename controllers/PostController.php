@@ -31,7 +31,7 @@ class PostController
 	public function show_action($id)
 	{
 		$postmodel = new PostModel();
-		$post = $postmodel->get_post_by_id($id);
+		$post = $postmodel->get_row_by_id($id);
 		$html = $this->render_template("view/template/showpost.php", array('post' => $post));
 		return new Response($html);
 	}
@@ -41,7 +41,7 @@ class PostController
 	function admin_action()
 	{
 		$postmodel = new PostModel();
-		$posts = $postmodel->get_all_posts();
+		$posts = $postmodel->get_all_rows();
 		$html = $this->render_template("view/template/adminpost.php", array('posts' => $posts));
 		return new Response($html);
 	}
@@ -52,7 +52,7 @@ class PostController
 	{
 		$postmodel = new PostModel();
 		$postmodel->add_post();
-		$posts = $postmodel->get_all_posts();
+		$posts = $postmodel->get_all_rows();
 		$html = $this->render_template("view/template/adminpost.php", array('posts'=>$posts));
 		return new Response($html);
 	}
@@ -62,8 +62,8 @@ class PostController
 	function delete_action($id)
 	{
 		$postmodel = new PostModel();
-		$postmodel->delete_post_by_id($id);
-		$posts = $postmodel->get_all_posts();
+		$postmodel->delete_row_by_id($id);
+		$posts = $postmodel->get_all_rows();
 		$html = $this->render_template("view/template/adminpost.php", array('posts'=>$posts));
 		return new Response($html);
 	}
